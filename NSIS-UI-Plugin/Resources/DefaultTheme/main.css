@@ -1,0 +1,37 @@
+* {
+	font-family: Microsoft YaHei;
+}
+
+QWidget#widgetTitle {
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    background-color: rgb(79, 133, 233);
+}
+
+
+
+QWidget#centralWidget {
+    background-color: rgb(255,255,255);
+    border-radius: 8px;
+    border: 1px solid rgb(79, 133, 233);
+    /* 
+	[see also]:
+	border-top-left-radius
+	border-top-right-radius
+	border-bottom-left-radius
+	border-bottom-right-radius
+	*/
+}
+
+/*QWidget#tabWidget::pane {
+    border: none;
+}*/
+
+
+QSvgWidget#widgetLogo {
+    image: url(:/DefaultTheme/qt.svg);
+}
+
+
+
+

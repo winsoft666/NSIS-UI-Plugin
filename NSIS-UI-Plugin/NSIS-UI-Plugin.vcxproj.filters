@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NSISQtPlugin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainPage.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt-FramelessWindow\FramelessMainWindow.cpp">
+      <Filter>UI\Qt-FramelessWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="PluginContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginCommon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InstallEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{da7da05f-87d6-4dd6-8d65-50d4425b1178}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\DefaultTheme">
+      <UniqueIdentifier>{1ea0ff3b-f918-4e8e-bd21-2d6ae8503cd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Qt-FramelessWindow">
+      <UniqueIdentifier>{c5262b20-3e3d-4761-85e1-a7e4d6be1ad7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="Resources\MainPage.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="MainPage.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Qt-FramelessWindow\FramelessMainWindow.h">
+      <Filter>UI\Qt-FramelessWindow</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Resources\DefaultTheme\DefaultTheme.qrc">
+      <Filter>Resource Files\DefaultTheme</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultTheme\main.css">
+      <Filter>Resource Files\DefaultTheme</Filter>
+    </None>
+  </ItemGroup>
+</Project>

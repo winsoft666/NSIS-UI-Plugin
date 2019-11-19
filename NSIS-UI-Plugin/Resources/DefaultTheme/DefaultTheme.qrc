@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/DefaultTheme">
+        <file>main.css</file>
+        <file>qt.svg</file>
+    </qresource>
+</RCC>
