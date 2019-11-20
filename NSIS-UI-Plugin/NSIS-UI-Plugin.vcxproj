@@ -106,7 +106,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MainPage.cpp" />
+    <ClCompile Include="SetupPage-Qt.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="NSISUIPlugin.cpp" />
     <ClCompile Include="PluginContext.cpp" />
@@ -120,11 +120,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="MainPage.h" />
+    <QtMoc Include="SetupPage-Qt.h" />
     <ClInclude Include="InstallEvent.h" />
     <ClInclude Include="PluginCommon.h" />
     <QtMoc Include="Qt-FramelessWindow\FramelessMainWindow.h" />
     <ClInclude Include="PluginContext.h" />
+    <ClInclude Include="SetupPageInterface.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

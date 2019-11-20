@@ -1,7 +1,7 @@
 #include <windows.h>
 #include <tchar.h>
 #include <assert.h>
-#include "../NSIS-Qt-Plugin/PluginCommon.h"
+#include "../NSIS-UI-Plugin/PluginCommon.h"
 
 typedef void (* PFN_CreateSetupUI)(HWND hwndParent, int stringSize, TCHAR *variables, stack_t **stacktop, ExtraParameters *extra);
 

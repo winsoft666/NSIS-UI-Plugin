@@ -1,20 +1,25 @@
 #include "stdafx.h"
-#include "MainPage.h"
+#include "SetupPage-Qt.h"
 
 
 #define NSMETHOD_INIT() do {\
         PluginContext::Instance()->SetExtraParameters(extra); \
         PluginContext::Instance()->SetParentHwnd(hwndParent); \
+        extra->RegisterPluginCallback(PluginContext::Instance()->pluginHandle(), PluginCallback); \
         EXDLL_INIT(); } while(false)
 
+static UINT_PTR PluginCallback(enum NSPIM msg) {
+    return 0;
+}
 
 NSISAPI ShowSetupUI(HWND hwndParent, int stringSize, TCHAR *variables, stack_t **stacktop, ExtraParameters *extra) {
     NSMETHOD_INIT();
-    
   
     TCHAR szNsisPluginDir[MAX_PATH] = { 0 };
     popstring(szNsisPluginDir);
 
+    // Start show Qt UI
+    //
     if (_tcslen(szNsisPluginDir) > 0) {
         QString strQtPluginDir;
 #if (defined _UNICODE || defined UNICODE)
@@ -33,8 +38,9 @@ NSISAPI ShowSetupUI(HWND hwndParent, int stringSize, TCHAR *variables, stack_t *
     GetModuleFileNameA(NULL, currentPath, MAX_PATH);
     char *argv[2] = { {currentPath}, {} };
     QApplication app(argc, argv);
-    MainPage mainPage;
-    mainPage.show();
+    SetupPage_Qt *mainPage = new SetupPage_Qt();
+    PluginContext::Instance()->SetSetupPage(mainPage);
+    mainPage->show();
     app.exec();
 }
 
@@ -59,10 +65,35 @@ NSISAPI BindButtonClickedEventToNsisFunc(HWND hwndParent, int stringSize, TCHAR 
     PluginContext::Instance()->BindButtonClickedEvent(szControlName, callbackFuncAddress);
 }
 
-
-NSISAPI CloseSetupUI(HWND hwndParent, int stringSize, TCHAR *variables, stack_t **stacktop, ExtraParameters *extra) {
+NSISAPI GetInstallDirectory(HWND hwndParent, int stringSize, TCHAR *variables, stack_t **stacktop, ExtraParameters *extra) {
     NSMETHOD_INIT();
-
+    tstring strDir;
+    if (PluginContext::Instance()->GetSetupPage()) {
+        strDir = PluginContext::Instance()->GetSetupPage()->GetInstallDirectory();
+    }
+    pushstring(strDir.c_str());
 }
 
 
+NSISAPI SetInstallStepDescription(HWND hwndParent, int stringSize, TCHAR *variables, stack_t **stacktop, ExtraParameters *extra) {
+    NSMETHOD_INIT();
+    TCHAR szDescription[MAX_PATH] = { 0 };
+    long percent = -1;
+
+    popstring(szDescription);
+    percent = popint();
+
+    if (PluginContext::Instance()->GetSetupPage()) {
+        PluginContext::Instance()->GetSetupPage()->SetInstallStepDescription(szDescription, percent);
+    }
+}
+
+NSISAPI BackgroundRun(HWND hwndParent, int stringSize, TCHAR *variables, stack_t **stacktop, ExtraParameters *extra) {
+    NSMETHOD_INIT();
+    long nsisFuncAddress = popint();
+
+    std::thread t = std::thread([nsisFuncAddress]() {
+        PluginContext::Instance()->ExecuteNsisFunction(nsisFuncAddress - 1);
+    });
+    t.detach();
+}

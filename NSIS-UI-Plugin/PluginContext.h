@@ -1,4 +1,5 @@
 #pragma once
+#include "SetupPageInterface.h"
 
 class PluginContext {
   public:
@@ -7,8 +8,16 @@ class PluginContext {
     void SetExtraParameters(ExtraParameters *param);
     ExtraParameters* GetExtraParameters();
 
+    void SetPluginHandle(HMODULE h);
+    HMODULE pluginHandle() const;
+
     void SetParentHwnd(HWND h);
     HWND parentHwnd() const;
+
+    HANDLE GetExitEvent();
+
+    void SetSetupPage(SetupPageInterface* page);
+    SetupPageInterface* GetSetupPage();
 
     void BindInstallEvent(const tstring &eventName, long nsisFuncAddress);
     void BindButtonClickedEvent(const tstring &buttonName, long nsisFuncAddress);
@@ -17,10 +26,15 @@ class PluginContext {
 
     bool ExecuteInstallEventFunction(const tstring &installEvent);
     bool ExecuteButtonClickedEventFunction(const tstring &buttonName);
+
   private:
     PluginContext();
 
+    HANDLE m_exitEvent;
+
+    HMODULE m_pluginHandle;
     HWND m_parentHwnd;
+    SetupPageInterface* m_setupPage;
     ExtraParameters *m_pluginParms;
     std::map<tstring, long> m_installEventBindMap;
     std::map<tstring, long> m_buttonClickedEventBindMap;

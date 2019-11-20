@@ -16,4 +16,5 @@ typedef std::string tstring;
 #include "PluginCommon.h"
 #include "PluginContext.h"
 #include "InstallEvent.h"
+#include "SetupPageInterface.h"
 

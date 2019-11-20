@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>757</width>
-    <height>487</height>
+    <width>743</width>
+    <height>467</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="elideMode">
      <enum>Qt::ElideNone</enum>
@@ -42,8 +42,8 @@
      <widget class="QPushButton" name="pushButtonStartInstall">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>270</y>
+        <x>400</x>
+        <y>140</y>
         <width>101</width>
         <height>23</height>
        </rect>
@@ -52,25 +52,25 @@
        <string>Install</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonSelectInstallForder">
+     <widget class="QPushButton" name="pushButtonSelectInstallDir">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>180</y>
-        <width>111</width>
+        <x>450</x>
+        <y>50</y>
+        <width>31</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>Select Browser</string>
+       <string>...</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditInstallForder">
+     <widget class="QLineEdit" name="lineEditInstallDir">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>180</y>
-        <width>351</width>
+        <x>30</x>
+        <y>50</y>
+        <width>421</width>
         <height>20</height>
        </rect>
       </property>
@@ -80,7 +80,7 @@
      <attribute name="title">
       <string>Tab 2</string>
      </attribute>
-     <widget class="QProgressBar" name="progressBarExractFiles">
+     <widget class="QProgressBar" name="progressBarInstall">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -91,6 +91,19 @@
       </property>
       <property name="value">
        <number>24</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelInstallDescription">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>230</y>
+        <width>611</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </widget>
@@ -124,7 +137,7 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>NSIS-Qt-Setup</string>
+        <string>NSIS Modern UI Setup by Using Qt</string>
        </property>
       </widget>
      </item>

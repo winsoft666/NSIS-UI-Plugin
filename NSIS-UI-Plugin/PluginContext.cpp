@@ -3,8 +3,10 @@
 
 PluginContext::PluginContext() :
     m_parentHwnd(NULL)
-    , m_pluginParms(NULL) {
-
+    , m_setupPage(NULL)
+    , m_pluginParms(NULL)
+    , m_pluginHandle(NULL) {
+    m_exitEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
 }
 
 PluginContext *PluginContext::Instance() {
@@ -17,7 +19,10 @@ PluginContext *PluginContext::Instance() {
 
 
 PluginContext::~PluginContext() {
-
+    if (m_exitEvent) {
+        CloseHandle(m_exitEvent);
+        m_exitEvent = NULL;
+    }
 }
 
 void PluginContext::SetExtraParameters(ExtraParameters *param) {
@@ -28,12 +33,32 @@ ExtraParameters *PluginContext::GetExtraParameters() {
     return m_pluginParms;
 }
 
+void PluginContext::SetPluginHandle(HMODULE h) {
+    m_pluginHandle = h;
+}
+
+HMODULE PluginContext::pluginHandle() const {
+    return m_pluginHandle;
+}
+
 void PluginContext::SetParentHwnd(HWND h) {
     m_parentHwnd = h;
 }
 
 HWND PluginContext::parentHwnd() const {
     return m_parentHwnd;
+}
+
+HANDLE PluginContext::GetExitEvent() {
+    return m_exitEvent;
+}
+
+void PluginContext::SetSetupPage(SetupPageInterface* page) {
+    m_setupPage = page;
+}
+
+SetupPageInterface* PluginContext::GetSetupPage() {
+    return m_setupPage;
 }
 
 void PluginContext::BindInstallEvent(const tstring &eventName, long nsisFuncAddress) {
