@@ -5,6 +5,15 @@
 !define PRODUCT_PUBLISHER      "vimeo"
 !define PRODUCT_LEGAL          "Copyright (C) 1999-2014 vimeo, All Rights Reserved"
 
+!ifdef DEBUG
+!define UI_PLUGIN_NAME         nsQtPluginD
+!define VC_RUNTIME_DLL_SUFFIX  d
+!define QT_DLL_SUFFIX          d
+!else
+!define UI_PLUGIN_NAME         nsQtPlugin
+!define VC_RUNTIME_DLL_SUFFIX
+!define QT_DLL_SUFFIX
+!endif
 
 !include "LogicLib.nsh"
 !include "nsDialogs.nsh"
@@ -23,9 +32,15 @@ VIAddVersionKey "LegalCopyright"    "${PRODUCT_LEGAL}"
 # ==================== NSIS Attribute ================================
 
 Unicode True
-#SetCompressor zlib
+SetCompressor LZMA
+!ifdef DEBUG
+Name "${PRODUCT_NAME} [Debug]"
+OutFile "vimeo-setup-debug.exe"
+!else
 Name "${PRODUCT_NAME}"
 OutFile "vimeo-setup.exe"
+!endif
+
 Icon              "vimeo.ico"
 UninstallIcon     "vimeo.ico"
 
@@ -46,17 +61,17 @@ Function QtUiPage
 	MessageBox MB_ICONINFORMATION|MB_OK "[Debug Info] NSIS Plugin Dir: $PLUGINSDIR" /SD IDOK
 	
 	GetFunctionAddress $0 OnStartExtractFiles
-	nsQtPlugin::BindInstallEventToNsisFunc "START_EXTRACT_FILES" $0
+	${UI_PLUGIN_NAME}::BindInstallEventToNsisFunc "START_EXTRACT_FILES" $0
 	
 	GetFunctionAddress $0 OnUserCancelInstall
-	nsQtPlugin::BindInstallEventToNsisFunc "USER_CANCEL" $0
+	${UI_PLUGIN_NAME}::BindInstallEventToNsisFunc "USER_CANCEL" $0
 	
-    nsQtPlugin::ShowSetupUI $PLUGINSDIR
+    ${UI_PLUGIN_NAME}::ShowSetupUI $PLUGINSDIR
 FunctionEnd
 
 
 Function OnStartExtractFiles
-	nsQtPlugin::GetInstallDirectory
+	${UI_PLUGIN_NAME}::GetInstallDirectory
 	Pop $0
 	StrCmp $0 "" InstallAbort 0
     StrCpy $INSTDIR "$0"
@@ -65,7 +80,7 @@ Function OnStartExtractFiles
 	SetOutPath $INSTDIR
   
     GetFunctionAddress $0 ___ExtractFiles
-    nsQtPlugin::BackgroundRun $0
+    ${UI_PLUGIN_NAME}::BackgroundRun $0
 		
 
 InstallAbort:
@@ -145,35 +160,35 @@ Function .onInit
 	InitPluginsDir
 	
 	# place Qt dlls to plugin directory
-    File /oname=$PLUGINSDIR\Qt5Cored.dll "$%QTDIR%\bin\Qt5Cored.dll"
-	File /oname=$PLUGINSDIR\Qt5Guid.dll "$%QTDIR%\bin\Qt5Guid.dll"
-	File /oname=$PLUGINSDIR\Qt5Widgetsd.dll "$%QTDIR%\bin\Qt5Widgetsd.dll"
-	File /oname=$PLUGINSDIR\Qt5Svgd.dll "$%QTDIR%\bin\Qt5Svgd.dll"
+    File /oname=$PLUGINSDIR\Qt5Core${QT_DLL_SUFFIX}.dll "$%QTDIR%\bin\Qt5Core${QT_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\Qt5Gui${QT_DLL_SUFFIX}.dll "$%QTDIR%\bin\Qt5Gui${QT_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\Qt5Widgets${QT_DLL_SUFFIX}.dll "$%QTDIR%\bin\Qt5Widgets${QT_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\Qt5Svg${QT_DLL_SUFFIX}.dll "$%QTDIR%\bin\Qt5Svg${QT_DLL_SUFFIX}.dll"
 	
 	CreateDirectory $PLUGINSDIR\platforms
-	File /oname=$PLUGINSDIR\platforms\qwindowsd.dll "$%QTDIR%\plugins\platforms\qwindowsd.dll"
+	File /oname=$PLUGINSDIR\platforms\qwindows${QT_DLL_SUFFIX}.dll "$%QTDIR%\plugins\platforms\qwindows${QT_DLL_SUFFIX}.dll"
 	
 	CreateDirectory $PLUGINSDIR\styles
-	File /oname=$PLUGINSDIR\styles\qwindowsvistastyled.dll "$%QTDIR%\plugins\styles\qwindowsvistastyled.dll"
+	File /oname=$PLUGINSDIR\styles\qwindowsvistastyle${QT_DLL_SUFFIX}.dll "$%QTDIR%\plugins\styles\qwindowsvistastyle${QT_DLL_SUFFIX}.dll"
 	
 	CreateDirectory $PLUGINSDIR\imageformats
-	File /oname=$PLUGINSDIR\imageformats\qgifd.dll "$%QTDIR%\plugins\imageformats\qgifd.dll"
-	File /oname=$PLUGINSDIR\imageformats\qicnsd.dll "$%QTDIR%\plugins\imageformats\qicnsd.dll"
-	File /oname=$PLUGINSDIR\imageformats\qicod.dll "$%QTDIR%\plugins\imageformats\qicod.dll"
-	File /oname=$PLUGINSDIR\imageformats\qjpegd.dll "$%QTDIR%\plugins\imageformats\qjpegd.dll"
-	File /oname=$PLUGINSDIR\imageformats\qsvgd.dll "$%QTDIR%\plugins\imageformats\qsvgd.dll"
+	File /oname=$PLUGINSDIR\imageformats\qgif${QT_DLL_SUFFIX}.dll "$%QTDIR%\plugins\imageformats\qgif${QT_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\imageformats\qicns${QT_DLL_SUFFIX}.dll "$%QTDIR%\plugins\imageformats\qicns${QT_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\imageformats\qico${QT_DLL_SUFFIX}.dll "$%QTDIR%\plugins\imageformats\qico${QT_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\imageformats\qjpeg${QT_DLL_SUFFIX}.dll "$%QTDIR%\plugins\imageformats\qjpeg${QT_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\imageformats\qsvg${QT_DLL_SUFFIX}.dll "$%QTDIR%\plugins\imageformats\qsvg${QT_DLL_SUFFIX}.dll"
 	CreateDirectory $PLUGINSDIR\iconengines
 	
-	File /oname=$PLUGINSDIR\iconengines\qsvgicond.dll "$%QTDIR%\plugins\iconengines\qsvgicond.dll"
+	File /oname=$PLUGINSDIR\iconengines\qsvgicon${QT_DLL_SUFFIX}.dll "$%QTDIR%\plugins\iconengines\qsvgicon${QT_DLL_SUFFIX}.dll"
 	
 	# place vc runtime dlls to plugin directory
-	File /oname=$PLUGINSDIR\concrt140d.dll "VCRuntimeDLL\concrt140d.dll"
-	File /oname=$PLUGINSDIR\msvcp140d.dll "VCRuntimeDLL\msvcp140d.dll"
-	File /oname=$PLUGINSDIR\msvcp140_1d.dll "VCRuntimeDLL\msvcp140_1d.dll"
-	File /oname=$PLUGINSDIR\msvcp140_2d.dll "VCRuntimeDLL\msvcp140_2d.dll"
-	File /oname=$PLUGINSDIR\ucrtbased.dll "VCRuntimeDLL\ucrtbased.dll"
-	File /oname=$PLUGINSDIR\vccorlib140d.dll "VCRuntimeDLL\vccorlib140d.dll"
-	File /oname=$PLUGINSDIR\vcruntime140d.dll "VCRuntimeDLL\vcruntime140d.dll"
+	File /oname=$PLUGINSDIR\concrt140${VC_RUNTIME_DLL_SUFFIX}.dll "VCRuntimeDLL\concrt140${VC_RUNTIME_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\msvcp140${VC_RUNTIME_DLL_SUFFIX}.dll "VCRuntimeDLL\msvcp140${VC_RUNTIME_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\msvcp140_1${VC_RUNTIME_DLL_SUFFIX}.dll "VCRuntimeDLL\msvcp140_1${VC_RUNTIME_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\msvcp140_2${VC_RUNTIME_DLL_SUFFIX}.dll "VCRuntimeDLL\msvcp140_2${VC_RUNTIME_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\ucrtbase${VC_RUNTIME_DLL_SUFFIX}.dll "VCRuntimeDLL\ucrtbase${VC_RUNTIME_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\vccorlib140${VC_RUNTIME_DLL_SUFFIX}.dll "VCRuntimeDLL\vccorlib140${VC_RUNTIME_DLL_SUFFIX}.dll"
+	File /oname=$PLUGINSDIR\vcruntime140${VC_RUNTIME_DLL_SUFFIX}.dll "VCRuntimeDLL\vcruntime140${VC_RUNTIME_DLL_SUFFIX}.dll"
 FunctionEnd
 
 

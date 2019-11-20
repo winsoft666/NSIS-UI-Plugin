@@ -36,16 +36,16 @@ def generate_nsis_script(dir):
             sub_dir = full_path[len(g_root_dir):]
             g_cur_script_index += 1
             g_insert_nsis_script_list.append('    CreateDirectory "$INSTDIR{0}"'.format(sub_dir))
-            g_insert_nsis_script_list.append('    nsQtPlugin::SetInstallStepDescription "Create Directory: {0}" {1}'
-                                             .format('$INSTDIR' + sub_dir,
+            g_insert_nsis_script_list.append('    {0}::SetInstallStepDescription "Create Directory: {1}" {2}'
+                                             .format('${UI_PLUGIN_NAME}', '$INSTDIR' + sub_dir,
                                                      g_cur_script_index * 100 / (g_extract_file_cmd_total + g_create_dir_cmd_total)))
             generate_nsis_script(full_path)
         else:
             g_cur_script_index += 1
             g_insert_nsis_script_list.append('    SetOutPath "$INSTDIR{0}"'.format(dir[len(g_root_dir):]))
             g_insert_nsis_script_list.append('    File "{0}"'.format( full_path))
-            g_insert_nsis_script_list.append('    nsQtPlugin::SetInstallStepDescription "Extract File: $INSTDIR{0}" {1}'
-                                             .format(full_path[len(g_root_dir):], g_cur_script_index * 100 / (g_extract_file_cmd_total + g_create_dir_cmd_total)))
+            g_insert_nsis_script_list.append('    {0}::SetInstallStepDescription "Extract File: $INSTDIR{1}" {2}'
+                                             .format('${UI_PLUGIN_NAME}', full_path[len(g_root_dir):], g_cur_script_index * 100 / (g_extract_file_cmd_total + g_create_dir_cmd_total)))
 
 
 def do_main(nsis_script_template_path):
