@@ -113,25 +113,31 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SetupPage-Qt.cpp" />
+    <ClCompile Include="DriverInfo.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="NSISUIPlugin.cpp" />
     <ClCompile Include="PluginContext.cpp" />
-    <ClCompile Include="Qt-FramelessWindow\FramelessMainWindow.cpp">
+    <ClCompile Include="Qt-UI\Qt-FramelessWindow\FramelessMainWindow.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Qt-UI\SetupPage-Qt.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="SetupPage-Qt.h" />
+    <ClInclude Include="DriverInfo.h" />
     <ClInclude Include="InstallEvent.h" />
     <ClInclude Include="PluginCommon.h" />
-    <QtMoc Include="Qt-FramelessWindow\FramelessMainWindow.h" />
     <ClInclude Include="PluginContext.h" />
+    <QtMoc Include="Qt-UI\SetupPage-Qt.h" />
+    <QtMoc Include="Qt-UI\Qt-FramelessWindow\FramelessMainWindow.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SetupPageInterface.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
@@ -143,6 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DefaultTheme\main.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NSIS-UI-Plugin.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -8,7 +8,6 @@ g_insert_nsis_script_list = []
 g_root_dir = ""
 
 
-
 def nsis_cmd_num_statistics(dir):
     global g_extract_file_cmd_total
     global g_create_dir_cmd_total
@@ -27,11 +26,13 @@ def nsis_cmd_num_statistics(dir):
 
 def generate_nsis_script(dir):
     global g_cur_script_index
+
     if not os.path.isdir(dir):
         return
 
     for fi in os.listdir(dir):
         full_path = os.path.join(dir, fi)
+        
         if os.path.isdir(full_path):
             sub_dir = full_path[len(g_root_dir):]
             g_cur_script_index += 1
@@ -56,6 +57,8 @@ def do_main(nsis_script_template_path):
     print "file total: " + str(g_extract_file_cmd_total) + ", dir total: " + str(g_create_dir_cmd_total)
 
     generate_nsis_script(g_root_dir)
+    g_insert_nsis_script_list.append('    ${UI_PLUGIN_NAME}::SetInstallStepDescription "Finished" 100')
+
     f = open(nsis_script_template_path, "r")
     all_nsis_script_lines = []
     cur_line_index = -1
@@ -84,6 +87,8 @@ def do_main(nsis_script_template_path):
 if __name__ == '__main__':
     nsis_script_template_path = sys.argv[1]
     print nsis_script_template_path
+
     g_root_dir = sys.argv[2]
     print  g_root_dir
+    
     do_main(nsis_script_template_path)

@@ -23,15 +23,61 @@ QWidget#centralWidget {
 	*/
 }
 
-/*QWidget#tabWidget::pane {
-    border: none;
-}*/
+QWidget#tabWidget::pane {
+    /*border: none;*/
+    /*border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;*/
+}
 
 
 QSvgWidget#widgetLogo {
     image: url(:/DefaultTheme/qt.svg);
 }
 
+#labelTitle {
+    color: rgb(255,255,255);
+}
 
+#pushButtonMin {
+    border: none;
+    image: url(:/DefaultTheme/minimize.svg);
+}
 
+#pushButtonMin:hover {
+    border: none;
+    image: url(:/DefaultTheme/minimize_hover.svg);
+}
 
+#pushButtonClose {
+    border: none;
+    image: url(:/DefaultTheme/close.svg);
+}
+
+#pushButtonClose:hover {
+    border: none;
+    image: url(:/DefaultTheme/close_hover.svg);
+}
+
+#pushButtonStartInstall, #pushButtonToFinishedPage, #pushButtonFinish {
+    border: none;
+    border-radius: 4px;
+    color: #e6e6e6;
+    background-color: #1296db;
+}
+
+#pushButtonStartInstall:hover, #pushButtonToFinishedPage:hover, #pushButtonFinish:hover {
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    background-color: #1296db;
+}
+
+#pushButtonSelectInstallDir {
+    border: none;
+    image: url(:/DefaultTheme/openfolder.svg);
+}
+
+#pushButtonSelectInstallDir:hover {
+    border: none;
+    image: url(:/DefaultTheme/openfolder_hover.svg);
+}
