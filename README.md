@@ -1,4 +1,4 @@
-[中文版](README_CH.md)
+[中文版](README_ch.md)
 
 # Project Introduce
 
