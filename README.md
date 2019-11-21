@@ -10,7 +10,7 @@
 
 1. Install NSIS
 
-Download [NSIS](https://nsis.sourceforge.io/Download) and install NSIS, then add `NSIS_DIR` system environment variable as NSIS install direcotry.
+Download [NSIS](https://nsis.sourceforge.io/Download) and install, then add `NSIS_DIR` system environment variable as NSIS install directory.
 
 2. Install Python
 
