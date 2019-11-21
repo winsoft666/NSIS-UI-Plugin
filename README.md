@@ -38,8 +38,8 @@ Since NSIS has no way to get file extract progress/details, so I write `NsisScri
 # Screenshot
 For example only, you can use any libray to create any UI by yourself.
 
-![Screenshot-1](.\Screenshot\1.png)
+![Screenshot-1](https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/1.png)
 
-![Screenshot-2](.\Screenshot\2.png)
+![Screenshot-2](https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/2.png)
 
-![Screenshot-3](.\Screenshot\3.png)
+![Screenshot-3](https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/3.png)
