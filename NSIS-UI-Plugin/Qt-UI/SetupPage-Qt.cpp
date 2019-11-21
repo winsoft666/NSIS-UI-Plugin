@@ -43,7 +43,7 @@ SetupPage_Qt::SetupPage_Qt(QWidget *parent)
     ui.tabWidget->tabBar()->hide();
 
     connect(ui.pushButtonMin, &QPushButton::clicked, [this]() {
-
+        this->showMinimized();
     });
 
     connect(ui.pushButtonClose, &QPushButton::clicked, [this]() {
