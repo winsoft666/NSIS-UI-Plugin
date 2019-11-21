@@ -20,15 +20,15 @@ Install Python just for execute `NsisScriptGenerate.py` script. After install, a
 
 NSIS-UI-Plugin use Qt as UI library by default.
 
-The Qt installer will add the `QtDIR` system environment variable as Qt install direcotry. If it not add automatically, you need to add it manually.
+The Qt installer will add the `QtDIR` system environment variable as Qt install directory. If it not add automatically, you need to add it manually.
 
 4. Compile NSIS-UI-Plugin
 
-After installing the above dependencies, then compile `NSIS-UI-Plugin\NSIS-UI-Plugin.vcxproj` project, Visual Studio's After Build Event will copy target file(Debug: `nsQtPluginD.dll` Release: `nsPlugin.dll`) to NSIS plugin direcotry(`NSIS_DIR\Plugins\x86-unicode`).
+After installing the above dependencies, then compile `NSIS-UI-Plugin\NSIS-UI-Plugin.vcxproj` project, Visual Studio's After Build Event will copy target file(Debug: `nsQtPluginD.dll` Release: `nsPlugin.dll`) to NSIS plugin directory(`NSIS_DIR\Plugins\x86-unicode`).
 
 5. Generate Test Setup
 
-`VimeoSetup` direcotry is sample about how to use NSIS-UI-Plugin.
+`VimeoSetup` directory is sample about how to use NSIS-UI-Plugin.
 
 ```txt
 App                     -- Place the files that need to be packaged into the installer
