@@ -2,7 +2,7 @@
 
 # Project Introduce
 
-[NSIS-UI-Plugin](https://github.com/winsoft666/NSIS-UI-Plugin) support a way to create setup with beatiful, modern UI.
+[NSIS-UI-Plugin](https://github.com/winsoft666/NSIS-UI-Plugin) support a way to create setup with beautiful, modern UI.
 
 [NSIS-UI-Plugin](https://github.com/winsoft666/NSIS-UI-Plugin) plugin use Qt as UI library by default, you can use any UI library in theory, such as [DuiLib](https://github.com/winsoft666/duilib2).
 
