@@ -1,32 +1,39 @@
-[中文版](README_ch.md)
+[>>> 中文版](README_ch.md)
 
-# Project Introduce
+# NSIS-UI-Plugin
+Create beautiful, modern UI setup for windows.
 
-[NSIS-UI-Plugin](https://github.com/winsoft666/NSIS-UI-Plugin) support a way to create setup with beautiful, modern UI.
+Using Qt as UI library by default, you can use any UI library in theory, such as [DuiLib](https://github.com/winsoft666/duilib2).
 
-[NSIS-UI-Plugin](https://github.com/winsoft666/NSIS-UI-Plugin) plugin use Qt as UI library by default, you can use any UI library in theory, such as [DuiLib](https://github.com/winsoft666/duilib2).
+---
 
-# Install Dependenciese
+# Dependencies
 
-1. Install NSIS
+**1. NSIS**
 
 Download [NSIS](https://nsis.sourceforge.io/Download) and install, then add `NSIS_DIR` system environment variable as NSIS install directory.
 
-2. Install Python
+**2. Python**
 
-Install Python just for execute `NsisScriptGenerate.py` script. After install, add the direcotry where `Python.exe` is located to `Path` system environment variable.
+Install Python just for execute `NsisScriptGenerate.py` script. 
 
-3. Install Qt
+After installed, add the direcotry where `Python.exe` is located to `Path` system environment variable.
+
+**3. Qt**
 
 NSIS-UI-Plugin use Qt as UI library by default.
 
-The Qt installer will add the `QtDIR` system environment variable as Qt install directory. If it not add automatically, you need to add it manually.
+The Qt installer will add the `QtDIR` system environment variable as Qt install directory. If it not be added automatically, you need to add it manually.
 
-4. Compile NSIS-UI-Plugin
+---
 
-After installing the above dependencies, then compile `NSIS-UI-Plugin\NSIS-UI-Plugin.vcxproj` project, Visual Studio's After Build Event will copy target file(Debug: `nsQtPluginD.dll` Release: `nsPlugin.dll`) to NSIS plugin directory(`NSIS_DIR\Plugins\x86-unicode`).
+# Getting Started
 
-5. Generate Test Setup
+**Compile NSIS-UI-Plugin**
+
+After installing the above dependencies, then compile `NSIS-UI-Plugin\NSIS-UI-Plugin.vcxproj` project, Visual Studio's *After Build Event* will copy target file(Debug: `nsQtPluginD.dll` Release: `nsPlugin.dll`) to NSIS plugin directory(`NSIS_DIR\Plugins\x86-unicode`).
+
+**Generate Setup**
 
 `VimeoSetup` directory is sample about how to use NSIS-UI-Plugin.
 
@@ -38,11 +45,13 @@ build-setup [debug].bat -- Generate Debug mode setup, that means using debug ver
 build-setup [debug].bat -- Generate Release mode setup
 ```
 
-Place the files you need to package into the `App` directory, then run `build-setup.bat` to generate the installer.
+Place the files you need to packaged into the `App` directory, then run `build-setup.bat` to generate the installer.
 
 
-`NsisScriptGenerate.py`:
+>`NsisScriptGenerate.py`:
 Since NSIS has no way to get file extract progress/details, so I write `NsisScriptGenerate.py`, enumerate `App` folder, add each file by `File` command, call `SetInstallStepDescription` interface to notify installing details.
+
+---
 
 # Screenshot
 
