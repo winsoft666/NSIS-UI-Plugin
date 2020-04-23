@@ -22,7 +22,7 @@
 
 #include "stdafx.h"
 #include "SetupPage-Qt.h"
-#include "DriverInfo.h"
+#include "../DriverInfo.h"
 
 SetupPage_Qt::SetupPage_Qt(QWidget *parent)
     : FramelessMainWindow(true, parent)
