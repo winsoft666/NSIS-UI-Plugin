@@ -2,7 +2,7 @@
 # Most time you just need edit user defined macro
 !define PRODUCT_NAME           "vimeo"
 !define EXE_NAME               "vimeo.exe"
-!define EXE_RELATIVE_PATH      "bin\vimeo.exe"
+!define EXE_RELATIVE_PATH      "\bin\vimeo.exe"
 !define PRODUCT_VERSION        "1.0.0.1"
 !define PRODUCT_PUBLISHER      "vimeo"
 !define PRODUCT_LEGAL          "Copyright (C) 1999-2014 vimeo, All Rights Reserved"
