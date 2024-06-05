@@ -3,7 +3,7 @@
 # NSIS-UI-Plugin
 Create beautiful, modern UI setup for windows.
 
-Using Qt as UI library by default, you can use any UI library in theory, such as [DuiLib](https://github.com/winsoft666/duilib2).
+Using Qt as default UI library, you can use any UI library in theory, such as [DuiLib](https://github.com/winsoft666/duilib2).
 
 ---
 
