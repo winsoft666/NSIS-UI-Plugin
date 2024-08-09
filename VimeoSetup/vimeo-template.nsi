@@ -5,7 +5,7 @@
 !define EXE_RELATIVE_PATH      "bin\vimeo.exe"
 !define PRODUCT_VERSION        "1.0.0.1"
 !define PRODUCT_PUBLISHER      "vimeo"
-!define PRODUCT_LEGAL          "Copyright (C) 1999-2014 vimeo, All Rights Reserved"
+!define PRODUCT_LEGAL          "Copyright (C) 1999-2024 vimeo, All Rights Reserved"
 !define INSTALL_ICON_PATH      "vimeo.ico"
 !define UNINSTALL_ICON_PATH    "vimeo.ico"
 !define DEFAULT_INSTALL_DIR    "$PROGRAMFILES\${PRODUCT_NAME}"

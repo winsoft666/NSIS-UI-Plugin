@@ -24,24 +24,32 @@
 
 Qt安装包会默认将安装目录添加`QTDIR`环境变量，如果没有自动添加，则需要手动添加。
 
+**4. Visual Studio**
+
+安装 Visual Studio，并安装 Qt VS Tool 插件及配置 Qt 版本和路径。
+
 ---
 
 # 开始使用
 
 **编译NSIS-UI-Plugin**
 
-安装完上面依赖项之后，编译`NSIS-UI-Plugin\NSIS-UI-Plugin.vcxproj`工程，Visual Studio生成后事件会自动将目标文件（Debug版：`nsQtPluginD.dll` Release版：`nsPlugin.dll`）拷贝到NSIS插件目录（`NSIS_DIR\Plugins\x86-unicode`）。
+安装完上面依赖项之后，打开`NSIS-UI-Plugin\NSIS-UI-Plugin.vcxproj`工程，在项目属性页中设置 Qt 版本。
+
+然后编译该项目，Visual Studio 的生成后事件会自动将目标文件（Debug版：`nsQtPluginD.dll` Release版：`nsPlugin.dll`）拷贝到NSIS插件目录（`NSIS_DIR\Plugins\x86-unicode`）。
+
+如果拷贝失败，可能是权限问题导致，需要以管理员权限运行 Visual Studio 后再次编译。
 
 **生成安装包**
 
 `VimeoSetup`是一个关于如何在NSIS中使用该插件的示例工程：
 
 ```txt
-App                -- 放置需要打包到安装包中的文件
-VCRuntimeDLL       -- 放置VC++运行时库文件（Debug版和Release版），Qt界面库默认采用MD模式编译，运行时需要依赖VC++运行时库
-vimeo-template.nsi -- NSIS模板文件，文件名的`-template`后缀固定的，NsisScriptGenerate.py会根据该模板生成vimeo.nsi
-build-setup [debug].bat -- 生成Debug版的安装包，即使用Debug版的Qt和NSIS-UI-Plugin
-build-setup [debug].bat -- 生成Release版的安装包
+App                         -- 放置需要打包到安装包中的文件
+VCRuntimeDLL                -- 放置VC++运行时库文件（Debug版和Release版），Qt界面库默认采用MD模式编译，运行时需要依赖VC++运行时库
+vimeo-template.nsi          -- NSIS模板文件，文件名的`-template`后缀固定的，NsisScriptGenerate.py会根据该模板生成vimeo.nsi
+build-setup [debug].bat     -- 生成Debug版的安装包，即使用Debug版的Qt和NSIS-UI-Plugin
+build-setup [debug].bat     -- 生成Release版的安装包
 ```
 
 将需要打包的文件放置到`App`目录，然后运行`build-setup.bat`生成安装包。

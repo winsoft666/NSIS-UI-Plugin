@@ -25,24 +25,32 @@ NSIS-UI-Plugin use Qt as UI library by default.
 
 The Qt installer will add the `QtDIR` system environment variable as Qt install directory. If it not be added automatically, you need to add it manually.
 
+**4. Visual Studio**
+
+Install Visual Studio and "Qt VS Tool" plugin, configure Qt version and install directory.
+
 ---
 
 # Getting Started
 
 **Compile NSIS-UI-Plugin**
 
-After installing the above dependencies, then compile `NSIS-UI-Plugin\NSIS-UI-Plugin.vcxproj` project, Visual Studio's *After Build Event* will copy target file(Debug: `nsQtPluginD.dll` Release: `nsPlugin.dll`) to NSIS plugin directory(`NSIS_DIR\Plugins\x86-unicode`).
+After installing the above dependencies, then open `NSIS-UI-Plugin\NSIS-UI-Plugin.vcxproj` project, setting Qt version in project property page.
+
+Compile project, Visual Studio's *After Build Event* will copy target file(Debug: `nsQtPluginD.dll` Release: `nsPlugin.dll`) to NSIS plugin directory(`NSIS_DIR\Plugins\x86-unicode`).
+
+If the copy fails, it may be caused by permission issues. You need to run Visual Studio with administrator rights and compile again.
 
 **Generate Setup**
 
 `VimeoSetup` directory is sample about how to use NSIS-UI-Plugin.
 
 ```txt
-App                     -- Place the files that need to be packaged into the installer
-VCRuntimeDLL            -- Place VC++ runtime files(Debug/Release), Qt compiled with MD mode by default.
-vimeo-template.nsi      -- NSIS template script file,`-template` suffix is fixed, can't change. NsisScriptGenerate.py will generate vimeo.nsi based on this template.
-build-setup [debug].bat -- Generate Debug mode setup, that means using debug version Qt/NSIS-UI-Plugin.
-build-setup [debug].bat -- Generate Release mode setup
+App                        -- Place the files that need to be packaged into the installer
+VCRuntimeDLL               -- Place VC++ runtime files(Debug/Release), Qt compiled with MD mode by default.
+vimeo-template.nsi         -- NSIS template script file,`-template` suffix is fixed, can't change. NsisScriptGenerate.py will generate vimeo.nsi based on this template.
+build-setup [debug].bat    -- Generate Debug mode setup, that means using debug version Qt/NSIS-UI-Plugin.
+build-setup [debug].bat    -- Generate Release mode setup
 ```
 
 Place the files you need to packaged into the `App` directory, then run `build-setup.bat` to generate the installer.
