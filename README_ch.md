@@ -62,8 +62,14 @@ build-setup [debug].bat     -- 生成Release版的安装包
 
 仅用作示例，你可以使用任意界面库创建任意的界面。
 
-![Screenshot-1](https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/1.png)
+<img src="https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/1.png" width="50%">
 
-![Screenshot-2](https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/2.png)
+<img src="https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/2.png" width="50%">
 
-![Screenshot-3](https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/3.png)
+<img src="https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/3.png" width="50%">
+
+# 赞助
+
+感谢您能使用本项目，如果这个项目能对您产生帮助，对我而言也是一件非常开心的事情。
+
+**可以前往我的 Github [主页](https://github.com/winsoft666) 进行赞助。**

@@ -65,8 +65,13 @@ Since NSIS has no way to get file extract progress/details, so I write `NsisScri
 
 For example only, you can use any UI library to create any UI by yourself.
 
-![Screenshot-1](https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/1.png)
+<img src="https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/1.png" width="50%">
 
-![Screenshot-2](https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/2.png)
+<img src="https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/2.png" width="50%">
 
-![Screenshot-3](https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/3.png)
+<img src="https://github.com/winsoft666/NSIS-UI-Plugin/blob/master/Screenshot/3.png" width="50%">
+
+# Sponsor
+Thank you for using this project. It would be a great pleasure for me if this project can be of help to you.
+
+**You can go to my Github [homepage](https://github.com/winsoft666) to make a donation.**
